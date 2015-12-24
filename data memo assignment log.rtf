@@ -26,7 +26,7 @@
 \b \
 
 \b0 10. Created a new column to indicate the time elapsed between every nursing home\'92s survey date and correction date. Applied the same formula (Correction.Date-Survey.Date) throughout this column to show the time elapsed for every nursing home.\
-11. Noticed some negative values in this new column, possible due to: 1) Missing correction dates; 2) Survey date took place after the correction date, perhaps because the nursing homes were alerted in previous inspections; 3) Wrong data in either column.\
+11. Noticed some negative values in this new column, possible due to: 1) Missing correction dates; 2) These nursing homes have no intention to correct deficiencies or have been granted waivers\
 12. Filtered the column to indicate only negative values. Eliminated all rows and cancelled filtering.\
 13. Plotted another pivot table indicating the average correction time against Provider States. Found out:\
 	VI has the longest average correction time: around 143 days\
@@ -34,34 +34,32 @@
 14. Plotted a new pivot table indicating the frequency of a certain correction time under different Provider States. Found out:\
 	TX has the most nursing homes that correct their deficiencies on the same day as the survey dates: 101 nursing homes.\
 	The nursing home that took the longest (360 days) to correct its deficiencies is located in California.\
+15. In the original spreadsheet with negative average correction date values, plotted a new pivot table to show the situations of Deficiency Corrected against the Provider States. Found out:\
+	TX has the highest number of Past-Noncompliance: 110\
+	TX has the second largest number of \'93Deficient, Provider has no plan of correction\'94: 39\
+	IA has the highest number of \'93Deficient, Provider has no plan of correction\'94: 42\
+16. In a new pivot table, plotted Complaint Deficiency against Provider States. Found out:\
+	TX has the highest number of \'93True\'92s\'94 for getting deficiency complaints: 750\
+17. Ran a COUNTIF function and found that out of 9536 rows, 1065 are located in TX, representing over 11% of the most deficient nursing homes.\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
-\cf0 15. Went back to source URL and filtered by: Scope Severity Code is A, B, C\
-16. Downloaded on 12/23/2015 as .csv, 47215 rows\
-17. Opened LeastSevere.csv in Excel (Delimited, change date columns to date-formatted, Federal Provider Number as text)\
+\cf0 18. Went back to source URL and filtered by: Scope Severity Code is A, B, C\
+19. Downloaded on 12/23/2015 as .csv, 47215 rows\
+20. Opened LeastSevere.csv in Excel (Delimited, change date columns to date-formatted, Federal Provider Number as text)\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
-\cf0 18. Plotted a pivot table indicating the number of Scope Severity Code that pertains to A, B or C under each Provider State. Found out:\
+\cf0 21. Plotted a pivot table indicating the number of Scope Severity Code that pertains to A, B or C under each Provider State. Found out:\
 	No nursing home under any Provider State received a letter grade A (Isolated, No actual harm with potential for minimal harm)\
 	CA has the most nursing homes graded B (Pattern, No actual harm with potential for minimal harm): 1883\
 	TX has the most nursing homes graded C (Widespread, No actual harm with potential for minimal harm): 3485\
 	TX has the most nursing homes graded B or C: 4184\
-19. Created a new column to indicate the time elapsed between every nursing home\'92s survey date and correction date. Applied the same formula (Correction.Date-Survey.Date) throughout this column to show the time elapsed for every nursing home.\
-20. Eliminated all negative data and their entire rows and cancelled filtering.\
-21. Plotted another pivot table indicating the average correction time against Provider States. Found out:\
+22. Created a new column to indicate the time elapsed between every nursing home\'92s survey date and correction date. Applied the same formula (Correction.Date-Survey.Date) throughout this column to show the time elapsed for every nursing home.\
+23. Eliminated all negative data and their entire rows and cancelled filtering.\
+24. Plotted another pivot table indicating the average correction time against Provider States. Found out:\
 	VI has the longest average correction time: around 143 days\
 	CT has the shortest average correction time: around 6 days\
-22. Plotted a new pivot table indicating the frequency of a certain correction time under different Provider States. Found out:\
+25. Plotted a new pivot table indicating the frequency of a certain correction time under different Provider States. Found out:\
 	TX has the most nursing homes that correct their deficiencies on the same day as the survey dates: 101 nursing homes.\
 	The nursing home that took the longest (360 days) to correct its deficiencies is located in California.\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
-\cf0 \
-\
-\
-\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
-\cf0 8. Loaded to R via: \
-	> MostSevere <- read.table("Downloads/MostSevere.csv", header=TRUE, sep=",", fill=TRUE, quote="\\"")\
-9. Converted date fields (Survey.Date and Correction.Date) to date-formatted, assigned them to date2 and date3 respectively.\
-	> SurveyDate <- as.Date(MostSevere$Survey.Date, "%m/%d/%Y")\
-	> CorrectionDate <- as.Date(MostSevere$Correction.Date, "%m/%d/%Y")\
-10. Joined new date fields to table. Eg:\
-	> MostSevere2 <- cbind(MostSevere, SurveyDate, CorrectionDate)}
+26. Plotted a new pivot table indicating the situations of Deficiency Corrected against the Provider States. Found out:\
+	TX has the highest number of \'93Deficient, Provider has no plan of correction\'94: 365\
+27. In a new pivot table, plotted Complaint Deficiency against Provider States. Found out:\
+	IA has the highest number of \'93True\'92s\'94 for getting deficiency complaints: 29}
