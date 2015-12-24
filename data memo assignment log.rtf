@@ -6,4 +6,15 @@
 
 \f0\fs24 \cf0 1. This project uses Medicare\'92s database of nursing home deficiencies\
 2. Source: {\field{\*\fldinst{HYPERLINK "https://data.medicare.gov/Nursing-Home-Compare/Deficiencies/r5ix-sfxw#"}}{\fldrslt https://data.medicare.gov/Nursing-Home-Compare/Deficiencies/r5ix-sfxw#}}\
-3. Downloaded on 12/23/2015 as .csv, }
+3. Downloaded on 12/23/2015 as .csv, 938962 rows\
+4. Loaded to R via: \
+	> data <- read.table("Downloads/Deficiencies.csv", header=TRUE, sep=",", fill=TRUE, quote="\\"")\
+5. Viewed table via: \
+	> View(data)\
+6. Converted date fields (Survey.Date, Correction.Date and Processing.Date) to date-formatted, assigned them to date2, date3 and date4 respectively.\
+	> date2 <- as.Date(data$Survey.Date, "%m/%d/%Y")\
+	> date3 <- as.Date(data$Correction.Date, "%m/%d/%Y")\
+	> date4 <- as.Date(data$Processing.Date, "%m/%d/%Y")\
+5. Joined new date fields to table. Eg:\
+	> data2 <- cbind(data, date2, date3, date4)\
+}
