@@ -11,9 +11,57 @@
 	> data <- read.table("Downloads/Deficiencies.csv", header=TRUE, sep=",", fill=TRUE, quote="\\"")\
 5. Viewed table via: \
 	> View(data)\
-6. Converted date fields (Survey.Date, Correction.Date and Processing.Date) to date-formatted, assigned them to date2, date3 and date4 respectively.\
-	> SurveyDate <- as.Date(data$Survey.Date, "%m/%d/%Y")\
-	> CorrectionDate <- as.Date(data$Correction.Date, "%m/%d/%Y")\
-	> ProcessingDate <- as.Date(data$Processing.Date, "%m/%d/%Y")\
-5. Joined new date fields to table. Eg:\
-	> data2 <- cbind(data,SurveyDate,CorrectionDate, ProcessingDate)}
+	Noticed that Scope Severity Code might be a good indicator of a specific state/city\'92s nursing home conditions.\
+6. Went back to source URL and filtered by: Scope Severity Code is J, K, L\
+7. Downloaded on 12/23/2015 as .csv, 9536 rows\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 8. Opened MostSevere.csv in Excel (Delimited, change date columns to date-formatted, Federal Provider Number as text)\
+9. Plotted a pivot table indicating the number of Scope Severity Code that pertains to J, K or L under each Provider State. Found out:\
+	KY has the most nursing homes graded J (Isolated, Immediate jeopardy to resident health or safety): 359\
+	TX has the most nursing homes graded K (Pattern, Immediate jeopardy to resident health or safety): 826\
+	TX has the most nursing homes graded L (Widespread, Immediate jeopardy to resident health or safety): 180\
+
+\b 	
+\b0 TX has the most nursing homes graded J, K or L: 1065
+\b \
+
+\b0 10. Created a new column to indicate the time elapsed between every nursing home\'92s survey date and correction date. Applied the same formula (Correction.Date-Survey.Date) throughout this column to show the time elapsed for every nursing home.\
+11. Noticed some negative values in this new column, possible due to: 1) Missing correction dates; 2) Survey date took place after the correction date, perhaps because the nursing homes were alerted in previous inspections; 3) Wrong data in either column.\
+12. Filtered the column to indicate only negative values. Eliminated all rows and cancelled filtering.\
+13. Plotted another pivot table indicating the average correction time against Provider States. Found out:\
+	VI has the longest average correction time: around 143 days\
+	CT has the shortest average correction time: around 6 days\
+14. Plotted a new pivot table indicating the frequency of a certain correction time under different Provider States. Found out:\
+	TX has the most nursing homes that correct their deficiencies on the same day as the survey dates: 101 nursing homes.\
+	The nursing home that took the longest (360 days) to correct its deficiencies is located in California.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 15. Went back to source URL and filtered by: Scope Severity Code is A, B, C\
+16. Downloaded on 12/23/2015 as .csv, 47215 rows\
+17. Opened LeastSevere.csv in Excel (Delimited, change date columns to date-formatted, Federal Provider Number as text)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 18. Plotted a pivot table indicating the number of Scope Severity Code that pertains to A, B or C under each Provider State. Found out:\
+	No nursing home under any Provider State received a letter grade A (Isolated, No actual harm with potential for minimal harm)\
+	CA has the most nursing homes graded B (Pattern, No actual harm with potential for minimal harm): 1883\
+	TX has the most nursing homes graded C (Widespread, No actual harm with potential for minimal harm): 3485\
+	TX has the most nursing homes graded B or C: 4184\
+19. Created a new column to indicate the time elapsed between every nursing home\'92s survey date and correction date. Applied the same formula (Correction.Date-Survey.Date) throughout this column to show the time elapsed for every nursing home.\
+20. Eliminated all negative data and their entire rows and cancelled filtering.\
+21. Plotted another pivot table indicating the average correction time against Provider States. Found out:\
+	VI has the longest average correction time: around 143 days\
+	CT has the shortest average correction time: around 6 days\
+22. Plotted a new pivot table indicating the frequency of a certain correction time under different Provider States. Found out:\
+	TX has the most nursing homes that correct their deficiencies on the same day as the survey dates: 101 nursing homes.\
+	The nursing home that took the longest (360 days) to correct its deficiencies is located in California.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 8. Loaded to R via: \
+	> MostSevere <- read.table("Downloads/MostSevere.csv", header=TRUE, sep=",", fill=TRUE, quote="\\"")\
+9. Converted date fields (Survey.Date and Correction.Date) to date-formatted, assigned them to date2 and date3 respectively.\
+	> SurveyDate <- as.Date(MostSevere$Survey.Date, "%m/%d/%Y")\
+	> CorrectionDate <- as.Date(MostSevere$Correction.Date, "%m/%d/%Y")\
+10. Joined new date fields to table. Eg:\
+	> MostSevere2 <- cbind(MostSevere, SurveyDate, CorrectionDate)}
