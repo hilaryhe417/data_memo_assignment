@@ -1,7 +1,7 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Calibri;}
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\margl1440\margr1440\vieww14900\viewh13400\viewkind0
+\margl1440\margr1440\vieww14900\viewh13380\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
 \f0\fs24 \cf0 1. This project uses Medicare\'92s database of nursing home deficiencies\
@@ -22,13 +22,12 @@
 	TX has the most nursing homes graded L (Widespread, Immediate jeopardy to resident health or safety): 180\
 	TX has the most nursing homes graded J, K or L: 1065\
 10. Plotted another pivot table, filtering all other states aside from Texas and counted the number of nursing homes graded J, K or L. Found out the following cities in Texas have the most number of nursing homes under this category:\
-	
-\f1 Columbus: 41\
+	Columbus: 41\
 	Corpus Christi: 44\
 	Memphis: 62\
 	Louisville: 70\
 	Houston: 82
-\f0\b \
+\b \
 
 \b0 11. Created a new column to indicate the time elapsed between every nursing home\'92s survey date and correction date. Applied the same formula (Correction.Date-Survey.Date) throughout this column to show the time elapsed for every nursing home.\
 12. Noticed some negative values in this new column, possible due to: 1) Missing correction dates; 2) These nursing homes have no intention to correct deficiencies or have been granted waivers\
@@ -37,7 +36,7 @@
 	VI has the longest average correction time: around 143 days\
 	CT has the shortest average correction time: around 6 days\
 15. Plotted a new pivot table indicating the frequency of a certain correction time under different Provider States. Found out:\
-	TX has the most nursing homes that correct their deficiencies on the same day as the survey dates: 101 nursing homes.\
+	TX has the most nursing homes that corrected their deficiencies on the same day as the survey dates: 101 nursing homes.\
 	The nursing home that took the longest (360 days) to correct its deficiencies is located in California.\
 16. In the original spreadsheet with negative average correction date values, plotted a new pivot table to show the situations of Deficiency Corrected against the Provider States. Found out:\
 	TX has the highest number of Past-Noncompliance: 110\
